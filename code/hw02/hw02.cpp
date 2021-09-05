@@ -9,12 +9,12 @@ using namespace std;
 string printablePoint(const Point* pt) {
 	stringstream ss;
 
-	ss << setprecision(2) << fixed << '[' << pt->x << ", " << pt->y << ']';
-	return ss.str();
-}
+	ss << setprecision(2) << fixed 
+        << '[' 
+        << pt->x << ", " << pt->y 
+        << ']';
 
-void printPoint(Point pt) {
-	cout << printablePoint(&pt);
+	return ss.str();
 }
 
 Point getPointFromUser() {
@@ -32,7 +32,9 @@ Point getPointFromUser() {
 
 	while (errorCheck) {
 		errorCheck = false;
-		cout << "Wrong input try again: ";
+		cout << "Try again \n";
+        cout << "Enter the x and y coordinates separated by a space: ";
+
 		cin.clear();
 		cin.ignore(999, '\n');
 
@@ -49,6 +51,14 @@ Point getPointFromUser() {
 	return userPoint;
 }
 
+double distanceBetweenPoints(const Point* pt1, const Point* pt2) {
+	return sqrt(pow(pt1->x - pt2->x, 2) + pow(pt1->y - pt2->y, 2));
+}
+
+void printPoint(Point pt) {
+	cout << printablePoint(&pt) << " ";
+}
+
 Triangle getTriangleFromUser() {
 	Triangle triangle;
 
@@ -59,11 +69,43 @@ Triangle getTriangleFromUser() {
 	return triangle;
 }
 
-double distanceBetweenPoints(const Point* vertex1, const Point* vertex2) {
-	return sqrt(pow(vertex1->x - vertex2->x, 2) + pow(vertex1->y - vertex2->y, 2));
+void printVertices(const Triangle *ptrThis) {
+    printPoint(ptrThis->vertex1);
+    printPoint(ptrThis->vertex2);
+    printPoint(ptrThis->vertex3);
 }
 
+Point getCentroid(const Triangle *ptrThis) {
+    Point centroid;
+
+    centroid.x = (ptrThis->vertex1.x + ptrThis->vertex2.x + ptrThis->vertex3.x) / 3.0;
+    centroid.y = (ptrThis->vertex1.y + ptrThis->vertex2.y + ptrThis->vertex3.y) / 3.0;
+
+    return centroid;
+}
+
+double getPerimeter(const Triangle *ptrThis) {
+    double perimeter = 0;
+
+    perimeter += distanceBetweenPoints(&(ptrThis->vertex1), &(ptrThis->vertex2))
+        + distanceBetweenPoints(&(ptrThis->vertex2), &(ptrThis->vertex3))
+        + distanceBetweenPoints(&(ptrThis->vertex3), &(ptrThis->vertex1));
+
+        return perimeter;
+} 
+
 int main() {
+    Triangle triangle;
+
+    triangle = getTriangleFromUser();
+    cout << "The triangle vertices are ";
+    printVertices(&triangle);
+    cout << "\nThe centroid is ";
+    printPoint(getCentroid(&triangle));
+    cout << setprecision(2) << fixed 
+        << "\nThe perimeter is " 
+        << getPerimeter(&triangle) 
+        << endl;
 
 	return 0;
 }
