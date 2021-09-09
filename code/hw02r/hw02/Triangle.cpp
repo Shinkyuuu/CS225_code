@@ -1,6 +1,4 @@
-#include <iostream>
 #include "Triangle.h"
-using namespace std;
 
 Triangle getTriangleFromUser() {
 	Triangle triangle;
@@ -14,9 +12,9 @@ Triangle getTriangleFromUser() {
 }
 
 void printVertices(const Triangle* ptrThis) {
-	printPoint(ptrThis->vertex1);
-	printPoint(ptrThis->vertex2);
-	printPoint(ptrThis->vertex3);
+	printPoint(&(ptrThis->vertex1));
+	printPoint(&(ptrThis->vertex2));
+	printPoint(&(ptrThis->vertex3));
 }
 
 Point getCentroid(const Triangle* ptrThis) {
