@@ -3,7 +3,7 @@
 Triangle getTriangleFromUser() {
 	Triangle triangle;
 
-	// Ask point for 3 points and add them to a triangle
+	// Ask user for 3 points and add them to a triangle
 	triangle.vertex1 = getPointFromUser();
 	triangle.vertex2 = getPointFromUser();
 	triangle.vertex3 = getPointFromUser();
@@ -20,6 +20,7 @@ void printVertices(const Triangle* ptrThis) {
 Point getCentroid(const Triangle* ptrThis) {
 	Point centroid;
 
+	// Centroid equation
 	centroid.x = (ptrThis->vertex1.x + ptrThis->vertex2.x + ptrThis->vertex3.x) / 3.0;
 	centroid.y = (ptrThis->vertex1.y + ptrThis->vertex2.y + ptrThis->vertex3.y) / 3.0;
 

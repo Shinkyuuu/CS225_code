@@ -39,9 +39,7 @@ Point getPointFromUser() {
 
 void printPoint(const Point* pt) {
 	cout << setprecision(2) << fixed
-		<< '['
-		<< pt->x << ", " << pt->y
-		<< ']' << endl;
+		<< '[' << pt->x << ", " << pt->y << "] ";
 }
 
 double distanceBetweenPoints(const Point* pt1, const Point* pt2) {

@@ -18,12 +18,12 @@ int main() {
 
 	cout << "The triangle vertices are ";
 	printVertices(&triangle);
+
 	cout << "\nThe centroid is ";
 	printPoint(&centroid);
+
 	cout << setprecision(2) << fixed
-		<< "\nThe perimeter is "
-		<< perimeter
-		<< endl;
+		<< "\nThe perimeter is " << perimeter << endl;
 
 	return 0;
 }

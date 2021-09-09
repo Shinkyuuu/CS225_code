@@ -1,1 +1,2 @@
 C:\Users\codys\Documents\GitHub\CS225_code\code\hw02r\hw02\x64\Debug\hw02.exe
+C:\Users\codys\Documents\GitHub\CS225_code\code\hw02\x64\Debug\hw02.exe
