@@ -1,10 +1,10 @@
 #include "Triangle.h"
 
-void Triangle::init() {
+void Triangle::enter() {
 	// Ask point for 3 points and add them to a triangle
-	vertex1.init();
-	vertex2.init(); 
-	vertex3.init();
+	vertex1.enter();
+	vertex2.enter(); 
+	vertex3.enter();
 }
 
 void Triangle::print() const {
@@ -31,9 +31,9 @@ double Triangle::getPerimeter() const {
 	double perimeter = 0;
 
 	// Add the distance between each point together
-	perimeter += vertex1.distanceFromPoint(&vertex2)
-		+ vertex2.distanceFromPoint(&vertex3)
-		+ vertex3.distanceFromPoint(&vertex1);
+	perimeter += vertex1.getDistanceTo(vertex2)
+		+ vertex2.getDistanceTo(vertex3)
+		+ vertex3.getDistanceTo(&vertex1);
 
 	return perimeter;
 }

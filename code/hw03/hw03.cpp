@@ -10,7 +10,7 @@ using std::endl;
 int main() {
 	Triangle triangle;
 
-	triangle.init();
+	triangle.enter();
 
 	cout << "The triangle vertices are ";
 	triangle.print();

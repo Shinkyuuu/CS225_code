@@ -8,7 +8,7 @@ using std::setprecision;
 using std::fixed;
 using std::endl;
 
-void Point::init() {
+void Point::enter() {
 	// Set errorCheck to true if the 'x' or 'y' inputs are invalid
 	cout << "Enter the x and y coordinates separated by a space: ";
 	cin >> x;
@@ -31,18 +31,17 @@ void Point::init() {
 	cin.ignore(999, '\n');
 }
 
-double Point::getX() const { return x; }
-double Point::getY() const { return y; }
-
-void Point::setX(double x) { this->x = x; }
-void Point::setY(double y) { this->y = y; }
-
 void Point::print() const {
 	cout << setprecision(2) << fixed
 		<< '[' << x << ", " <<  y << "] ";
 }
 
-double Point::distanceFromPoint(const Point* pt2) const {
+double Point::getDistanceTo(const Point pt2) const {
 	// Just distance equation 
-	return sqrt(pow(this->x - pt2->x, 2) + pow(this->y - pt2->y, 2));
+	return sqrt(pow(x - pt2.x, 2) + pow(y - pt2.y, 2));
+}
+
+double Point::getDistanceTo(const Point* pt2) const {
+	// Just distance equation 
+	return sqrt(pow(x - pt2->x, 2) + pow(this->y - pt2->y, 2));
 }

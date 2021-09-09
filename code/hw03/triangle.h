@@ -6,7 +6,7 @@ class Triangle {
 	Point vertex2;
 	Point vertex3;
 public:
-	void init();
+	void enter();
 	void print() const;
 	Point getCentroid() const;
 	double getPerimeter() const;

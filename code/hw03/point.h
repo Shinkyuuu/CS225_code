@@ -4,12 +4,14 @@ class Point {
 	double x;
 	double y;
 public:
-	void init();
-	void setX(double x);
-	void setY(double y);
-	double getX() const;
-	double getY() const;
+	void enter();
+	double getX() const { return x; }
+	double getY() const { return y; }
+	void setX(double x) { this->x = x; }
+	void setY(double y) { this->y = y; }
 	void print() const;
-	double distanceFromPoint(const Point* pt2) const;
+	double getDistanceTo(Point pt2) const;
+	double getDistanceTo(const Point* pt2) const;
+
 };
 
