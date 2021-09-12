@@ -1,4 +1,4 @@
-# CS225 code
+# CS225 code (In Progress)
 
 ### 🔹 Homework \#1
 ---
