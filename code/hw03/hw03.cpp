@@ -8,16 +8,20 @@ using std::fixed;
 using std::endl;
 
 int main() {
-	Triangle triangle;
+	Triangle userTriangle;
 
-	triangle.enter();
+	// Receive the triangle from the user.
+	userTriangle.enter();
 
+	// Print all of the triangle data
 	cout << "The triangle vertices are ";
-	triangle.print();
+	userTriangle.print();
+
 	cout << "\nThe centroid is ";
-	triangle.getCentroid().print();
+	userTriangle.getCentroid().print();
+
 	cout << setprecision(2) << fixed
-		<< "\nThe perimeter is " << triangle.getPerimeter() << endl;
+		<< "\nThe perimeter is " << userTriangle.getPerimeter() << endl;
 	
 	return 0;
 }

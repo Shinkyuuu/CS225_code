@@ -17,7 +17,8 @@ void Point::enter() {
 
 	// Ask for inputs agian if either coordinate had an invalid input
 	while (cin.fail()) {
-		cout << "Try again \nEnter the x and y coordinates separated by a space: ";
+		cout << "Try again" 
+			<< "\nEnter the x and y coordinates separated by a space : ";
 
 		cin.clear();
 		cin.ignore(999, '\n');
