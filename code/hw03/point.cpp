@@ -9,7 +9,6 @@ using std::fixed;
 using std::endl;
 
 void Point::enter() {
-	// Set errorCheck to true if the 'x' or 'y' inputs are invalid
 	cout << "Enter the x and y coordinates separated by a space: ";
 	cin >> x;
 	cin.ignore(2, ' ');
@@ -44,5 +43,5 @@ double Point::getDistanceTo(const Point pt2) const {
 
 double Point::getDistanceTo(const Point* pt2) const {
 	// Just distance equation 
-	return sqrt(pow(x - pt2->x, 2) + pow(this->y - pt2->y, 2));
+	return sqrt(pow(x - pt2->x, 2) + pow(y - pt2->y, 2));
 }

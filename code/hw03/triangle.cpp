@@ -1,7 +1,6 @@
 #include "Triangle.h"
 
 void Triangle::enter() {
-	// Ask point for 3 points and add them to a triangle
 	vertex1.enter();
 	vertex2.enter(); 
 	vertex3.enter();
