@@ -8,10 +8,10 @@ IntegerBuffer::IntegerBuffer() {
 }
 
 int IntegerBuffer::add(int value) {
-    if (dataLength >= (dataCapacity-1)) {
+    if (dataLength >= dataCapacity) {
         return 0;
     }
-    data[dataLength] = value;
+    data[dataLength-1] = value;
     ++dataLength;
 
     return 1;
@@ -20,7 +20,7 @@ int IntegerBuffer::add(int value) {
 int IntegerBuffer::add(const int array[], int arrayLength) {
     int numOfAdded = 0;
 
-    for (int i; i < arrayLength; ++i) {
+    for (int i = 0; i < arrayLength; ++i) {
         numOfAdded += add(array[i]);
     }
 
@@ -28,7 +28,7 @@ int IntegerBuffer::add(const int array[], int arrayLength) {
 }
 
 int IntegerBuffer::index(int value) const {
-    for (int i=0; i < dataLength; ++i) {
+    for (int i = 0; i < dataLength; ++i) {
         if (data[i] == value) {
             return i;
         }
@@ -76,5 +76,12 @@ int IntegerBuffer::removeStable(int index) {
 }
 
 void IntegerBuffer::print(int numOfColumns, int columnWidth) const {
+    for (int i = 0; i < dataLength; ++i) {
+        if (i % numOfColumns == 0) {
+            cout << endl;
+        }
+        cout << setw(columnWidth) << data[i];
+    }
 
+    cout << "\n";
 }

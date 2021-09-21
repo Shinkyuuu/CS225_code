@@ -1,6 +1,7 @@
 #pragma once
 
 class IntegerBuffer{
+private:
     static const int dataCapacity = 32;
     int data[dataCapacity];
     int dataLength;
