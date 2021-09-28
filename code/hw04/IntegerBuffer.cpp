@@ -6,7 +6,7 @@ using std::setw;
 using std::endl;
 
 IntegerBuffer::IntegerBuffer() {
-    data[0] = 0;
+    //data[0] = 0;
     dataLength = 0;
 }
 
