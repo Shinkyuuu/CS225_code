@@ -2,7 +2,7 @@
 #include "Temperature.h"
 
 Temperature::Temperature() {
-    tempF = 0.0;
+    tempF = 0;
 }
 
 void Temperature::setFahrenheit(double tempF) {
@@ -11,7 +11,7 @@ void Temperature::setFahrenheit(double tempF) {
 
 void Temperature::setCelcius(double tempC) {
     // Celcius to Fahrenheit conversion
-    tempF = (tempC * (9.0 / 5.0)) + 32.0;
+    tempF = (tempC * 9.0 / 5.0) + 32.0;
 }
 
 void Temperature::setKelvin(double tempK) {
@@ -30,5 +30,5 @@ double Temperature::getCelcius() const {
 
 double Temperature::getKelvin() const {
     // Fahrenheit to Kelvin conversion
-    return (tempF - 32.0) * (5.0 / 9.0) + 273.15;
+    return ((tempF - 32.0) * 5.0 / 9.0) + 273.15;
 }
