@@ -2,6 +2,10 @@
 #include <iomanip>
 #include <string>
 #include "Temperature.h"
+using std::cout;
+using std::endl;
+using std::cin;
+using std::string;
 using namespace std;
 
 void getTemperatureFromUser(Temperature* userTemp);
@@ -11,52 +15,64 @@ int main() {
     getTemperatureFromUser(&userTemp);
 
     cout << setprecision(2) << fixed;
-    cout << "That temperature in Celcius is " << userTemp.getCelcius() << "\n";
-    cout << "That temperature in Fahrenheit is " << userTemp.getFahrenheit() << "\n";
-    cout << "That temperature in Kelvin is " << userTemp.getKelvin() << endl;
+    cout << "That temperature in Celcius is " << userTemp.getTemperatureAsCelcius() << "\n";
+    cout << "That temperature in Fahrenheit is " << userTemp.getTemperatureAsFahrenheit() << "\n";
+    cout << "That temperature in Kelvin is " << userTemp.getTemperatureAsKelvin() << endl;
 
-    return EXIT_SUCCESS;;
+    return 0;
 }
 
-
-void getTemperatureFromUser(Temperature* userTemp) {
-    double tempValue;
-    string tempUnit;
-    // Checks to see if tempUnit corresponds to an acrual temperature unit (Kelvin, Celcius, or Fahrenheit)
-    bool tempUnitFail; 
-
-    cout << "Enter a temperature followed by the units: ";
-    cin >> tempValue;
-    cin.ignore(2, ' ');
-    cin >> tempUnit;
-
-    // Check if the temperature units corresponds to actual temperature unit
-    tempUnitFail = (tempUnit.compare("F") != 0 &&
-               tempUnit.compare("C") != 0 &&
-               tempUnit.compare("K") != 0);
-
-    // Error Check
-    while (cin.fail() || tempUnitFail) {
-        cout << "That input was invalid, try again.\n";
+// Function: getTemperatureFromUser
+// Purpose: Prompt user for a temperature and put it in the argument object
+// Parameter: temperatureObject is a pointer to a Temperature object
+// Returns: nothing
+//
+void getTemperatureFromUser(Temperature* temperatureObject) {
+    double amount = 0.0; // this is the user's input for the temperature
+    string units = " "; // this is a string, but we only use the first letter
+    bool goodInput = false; // this is a flag to stay in the "try-again" loop
+    // Space the text over so it looks kind of centered
+    cout << " I will ask you for a temperature and its units.\n";
+    cout << " For example, your input might be \"98.6 F\".\n";
+    // Use new line characters instead of endl since the last cout has endl.
+    cout << "Use C for Celsius, F for Fahrenheit, K for Kelvin.\n" << endl;
+    do {
         cout << "Enter a temperature followed by the units: ";
-        cin.clear();
-        cin.ignore(999, '\n');
-
-        cin >> tempValue;
-        cin.ignore(2, ' ');
-        cin >> tempUnit;
-
-        tempUnitFail = (tempUnit.compare("F") != 0 &&
-            tempUnit.compare("C") != 0 &&
-            tempUnit.compare("K") != 0);
-    }
-
-    // Convert the inputted temperature into Fahrenheit within the Temperature object.
-    if (tempUnit.compare("F") == 0) {
-        userTemp->setFahrenheit(tempValue);
-    } else if (tempUnit.compare("C") == 0) {
-        userTemp->setCelcius(tempValue);
-    } else if (tempUnit.compare("K") == 0) {
-        userTemp->setKelvin(tempValue);
-    }
+        cin >> amount >> units;
+        if (cin.fail()) {
+            // clear all artifacts of the failed input
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "I'm sorry. Your input failed. Please try again." << endl;
+            // "continue" means skip rest of code block for the containing loop
+            goodInput = false;
+        }
+        else
+            goodInput = true;
+        if (goodInput) {
+            // Use a switch statement to select among one letter responses
+            // C++ string operator [] returns the letter in that position
+            switch (units[0]) {
+                // The choices are character constants (not strings), hence '
+            case 'C':
+            case 'c':
+                temperatureObject->setTemperatureAsCelsius(amount);
+                // "case" represents a starting point for execution
+                // If you don't want to continue further, use "break"
+                break;
+            case 'F':
+            case 'f':
+                temperatureObject->setTemperatureAsFahrenheit(amount);
+                break;
+            case 'K':
+            case 'k':
+                temperatureObject->setTemperatureAsKelvin(amount);
+                break;
+            default:
+                cout << "The type was not recognizable as C, F, or K." << endl;
+                goodInput = false;
+            }
+        }
+        // If we make it to here without changing notDone, we are done.
+    } while (!goodInput);
 }
