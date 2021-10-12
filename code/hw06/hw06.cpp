@@ -8,18 +8,20 @@ int main() {
     testTreasure();
 }
 
+// Ask for weight and volume of treasure then tell user if it's pure.
 void testTreasure() {
-    Weight treasureWeight;
-    Volume treasureVolume;
+    Treasure newTreasure;
     double weightInPounds;
     double volumeInGallons;
 
     cout << "Enter the weight (Pounds) and "
             << "volume (Gallons) separated by a space: ";
+
     cin >> weightInPounds;
     cin.ignore(2, ' ');
     cin >> volumeInGallons;
 
+    // Error check user input (Make sure the inputs are numbers).
     while (cin.fail()) {
         cout << "There was an error, try again.\n";
         cout << "Enter the weight (Pounds) and "
@@ -33,16 +35,13 @@ void testTreasure() {
         cin >> volumeInGallons;
     }
 
-    treasureWeight.setInPounds(weightInPounds);
-    treasureVolume.setInGallons(volumeInGallons);
-
-    Treasure newTreasure;
     newTreasure.setWeight(weightInPounds);
     newTreasure.setVolume(volumeInGallons);
 
+    // Tell user if treasure's density is within 1% of pure gold's density.
     if (newTreasure.isPure(Treasure::GOLD, Treasure::ONE_PERCENT)) {
-        cout << "This is pure." << endl;
+        cout << "This treasure is pure." << endl;
     } else {
-        cout << "This is pure." << endl;
+        cout << "This treasure is not pure." << endl;
     }
 }
