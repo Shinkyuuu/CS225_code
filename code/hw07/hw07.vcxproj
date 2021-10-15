@@ -144,6 +144,7 @@
     <ClInclude Include="OrderedIntegerBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="hw07.cpp" />
     <ClCompile Include="IntegerBuffer.cpp" />
     <ClCompile Include="IntegerSet.cpp" />
     <ClCompile Include="OrderedIntegerBuffer.cpp" />

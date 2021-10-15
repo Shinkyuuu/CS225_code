@@ -3,7 +3,7 @@
 class IntegerBuffer {
 protected:
     static const int dataCapacity = 32;
-    int data[dataCapacity];
+    int data[dataCapacity] = {};
     int dataLength;
 public:
     IntegerBuffer();

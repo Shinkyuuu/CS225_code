@@ -5,5 +5,7 @@ class IntegerSet : public IntegerBuffer {
 public:
     int add(int value);
     int add(const int array[], int arrayLength);
+    int copy(const IntegerBuffer* other);
+    int copy(const IntegerSet* other);
 };
 

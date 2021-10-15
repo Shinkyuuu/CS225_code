@@ -28,9 +28,9 @@ int IntegerBuffer::add(int value) {
 int IntegerBuffer::add(const int array[], int arrayLength) {
     int numOfAdded = 0;
 
-    for (int i = 0; i < arrayLength; ++i) {
+    for (int i = 0; i < arrayLength; ++i) 
         numOfAdded += add(array[i]);
-    }
+    
     return numOfAdded;
 }
 
@@ -50,9 +50,9 @@ int IntegerBuffer::removeFast(int index) {
 // After it to the left by 1. Then decrement dataLength by 1.
 int IntegerBuffer::removeStable(int index) {
     if (index >= 0 && index < dataLength) {
-        for (int i = (index + 1); i < dataLength; ++i) {
+        for (int i = (index + 1); i < dataLength; ++i) 
             data[i - 1] = data[i];
-        }
+        
         --dataLength;
 
         return 1;
@@ -60,36 +60,37 @@ int IntegerBuffer::removeStable(int index) {
     return 0;
 }
 
+// Find the first instance of the value's index from the left side.
 int IntegerBuffer::index(int value) const {
-    for (int i = 0; i < dataLength; ++i) {
-        if (data[i] == value) {
+    for (int i = 0; i < dataLength; ++i) 
+        if (data[i] == value) 
             return i;
-        }
-    }
 
     return -1;
 }
 
+// Find the first instance of the value's index from the right side.
 int IntegerBuffer::rindex(int value) const {
-    for (int i = dataLength; i > 0; --i) {
-        if (data[i] == value) {
+    for (int i = dataLength; i > 0; --i) 
+        if (data[i] == value) 
             return i;
-        }
-    }
+        
     return -1;
 }
 
 void IntegerBuffer::print(int numOfColumns, int columnWidth) const {
     for (int i = 0; i < dataLength; ++i) {
-        if (i % numOfColumns == 0 and i != 0) {
+        if (i % numOfColumns == 0 and i != 0) 
             cout << "\n";
-        }
+        
         cout << setw(columnWidth) << data[i];
     }
     cout << endl;
 }
 
 int IntegerBuffer::copy(const IntegerBuffer* other) {
+    // If the given IntegerBuffer is not equal to the current one (this),
+    // Clear the current one and add the given buffer's conents to it.
     if (other != this) {
         this->clear();
         return this->add(other->data, other->dataLength);
@@ -99,9 +100,12 @@ int IntegerBuffer::copy(const IntegerBuffer* other) {
 }
 
 bool IntegerBuffer::compare(IntegerBuffer* other) const {
+    // Make sure both dataLength's are equal first.
     if (this->dataLength != other->dataLength)
         return false;
 
+
+    // If any of the index's values differ, return false.
     for (int i = 0; i < this->dataLength; ++i) 
         if (this->data[i] != other->data[i])
             return false;
