@@ -4,11 +4,11 @@
 class OrderedIntegerBuffer : public IntegerBuffer {
 public:
     OrderedIntegerBuffer() : IntegerBuffer() {}
-    int add(int value);
-    int add(const int array[], int arrayLength) { 
+    int add(int value) override;
+    inline int add(const int array[], int arrayLength) { 
         return IntegerBuffer::add(array, arrayLength); 
     }
-    int removeFast(int index) {
+    inline int removeFast(int index) override {
         return IntegerBuffer::removeStable(index);
     }
 };

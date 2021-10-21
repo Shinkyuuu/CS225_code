@@ -9,7 +9,7 @@ public:
     IntegerBuffer();
     void clear();
     virtual int add(int value);
-    virtual int add(const int array[], int arrayLength);
+    int add(const int array[], int arrayLength);
     virtual int removeFast(int index);
     int removeStable(int index);
     int index(int value) const;
