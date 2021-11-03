@@ -8,14 +8,16 @@ class Rational {
 public:
     Rational() : Rational(0, 1) {}
 
-    Rational(int numerator, int denominator) : 
-                  numerator(numerator), denominator(denominator) 
-                  { normalize(); }
+    Rational(int numerator, int denominator) :
+        numerator(numerator), denominator(denominator)
+    {
+        normalize();
+    }
 
     Rational operator* (const Rational& other);
     Rational operator/ (const Rational& other);
     Rational operator+ (const Rational& other);
-    Rational operator- (const Rational& other) ;
+    Rational operator- (const Rational& other);
     Rational operator= (const Rational& other);
     bool operator== (const Rational& other) const;
     bool operator!= (const Rational& other) const;

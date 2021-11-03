@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
-#include "Rational.h"
 #include "Assert.h"
+#include "Rational.h"
 
 using namespace std;
 
