@@ -54,7 +54,7 @@ Rational Rational::operator/ (const Rational& other) {
 Rational Rational::operator+ (const Rational& other) {
     Rational solu;
     solu.numerator = (this->numerator * other.denominator) +
-        (other.numerator * this->denominator);
+                                (other.numerator * this->denominator);
     solu.denominator = this->denominator * other.denominator;
 
     solu.normalize();
@@ -64,7 +64,7 @@ Rational Rational::operator+ (const Rational& other) {
 Rational Rational::operator- (const Rational& other) {
     Rational solu;
     solu.numerator = (this->numerator * other.denominator) -
-        (other.numerator * this->denominator);
+                                (other.numerator * this->denominator);
     solu.denominator = this->denominator * other.denominator;
 
     solu.normalize();
@@ -80,7 +80,7 @@ Rational Rational::operator= (const Rational& other) {
 
 bool Rational::operator== (const Rational& other) const {
     return (this->numerator == other.numerator &&
-        this->denominator == other.denominator);
+                this->denominator == other.denominator);
 }
 
 bool Rational::operator!= (const Rational& other) const {
