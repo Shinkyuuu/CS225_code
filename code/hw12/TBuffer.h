@@ -36,8 +36,9 @@ int TBuffer<T, CAPACITY>::add(T value) {
         ++dataLength;
 
         return 1;
+    } else {
+        return 0;
     }
-    return 0;
 }
 
 // Attempt to add each value in the given array to the buffer.
@@ -45,9 +46,9 @@ template<class T, int CAPACITY>
 int TBuffer<T, CAPACITY>::add(const T array[], int arrayLength) {
     int numOfAdded = 0;
 
-    for (int i = 0; i < arrayLength; ++i) {
+    for (int i = 0; i < arrayLength; ++i) 
         numOfAdded += add(array[i]);
-    }
+
     return numOfAdded;
 }
 
@@ -60,8 +61,9 @@ int TBuffer<T, CAPACITY>::removeFast(int index) {
         --dataLength;
 
         return 1;
+    } else {
+        return 0;
     }
-    return 0;
 }
 
 // Remove the element at the given array by moving every element
@@ -75,28 +77,26 @@ int TBuffer<T, CAPACITY>::removeStable(int index) {
         --dataLength;
 
         return 1;
+    } else {
+        return 0;
     }
-    return 0;
 }
 
 template<class T, int CAPACITY>
 int TBuffer<T, CAPACITY>::index(T value) const {
-    for (int i = 0; i < dataLength; ++i) {
-        if (data[i] == value) {
+    for (int i = 0; i < dataLength; ++i) 
+        if (data[i] == value) 
             return i;
-        }
-    }
 
     return -1;
 }
 
 template<class T, int CAPACITY>
 int TBuffer<T, CAPACITY>::rindex(T value) const {
-    for (int i = dataLength; i > 0; --i) {
-        if (data[i] == value) {
+    for (int i = dataLength; i > 0; --i) 
+        if (data[i] == value) 
             return i;
-        }
-    }
+
     return -1;
 }
 
@@ -108,6 +108,7 @@ void TBuffer<T, CAPACITY>::print() const {
         
         std::cout << std::setw(8) << data[i];
     }
+
     std::cout << std::endl;
 }
 
